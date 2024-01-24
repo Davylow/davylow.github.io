@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Bai Tap 17/1/2024</div>
+    <div>1. Switch case</div>
+    <script>
+        /** Bai Tap 17/1/2024 */
+        // 1. Switch case
+        var x = 8;
+        switch (x) {
+            case 2: {
+                document.write("Thu 2 \n")
+            }break;
+            case 3: {
+                document.write("Thu 3 \n")
+            }break;
+            case 4: {
+                document.write("Thu 4 \n")
+            }break;
+            case 5: {
+                document.write("Thu \n")
+            }break;
+            case 6: {
+                document.write("Thu 6 \n")
+            }break;
+            case 7: {
+                document.write("Thu 7 \n")
+            }break;
+            case 8: {
+                document.write("Chu nhat \n");
+            }break;
+        }         
+    </script>
+
+    <br><br>
+
+    <div>2. Switch case + mang</div>
+    <script> 
+        // 2. Switch case + mang
+        var y = ["Thu 2", "Thu 3", "Thu 4", "Thu 5", "Thu 6", "Thu 7", "Chu nhat"]
+
+        switch (x) {
+            case 2: {
+                document.write(y[x-2])
+            }break;
+            case 3: {
+                document.write(y[x-2])
+            }break;
+            case 4: {
+                document.write(y[x-2])
+            }break;
+            case 5: {
+                document.write(y[x-2])
+            }break;
+            case 6: {
+                document.write(y[x-2])
+            }break;
+            case 7: {
+                document.write(y[x-2])
+            }break;
+            case 8: {
+                document.write(y[x-2])
+            }break;
+        }
+    </script>
+    
+    <br><br>
+    <div>3. Kiem tra so nguyen to</div>
+    <script>
+        function checkNumber(number){
+            if (number <= 1) {
+                return false;
+            }
+            for (let i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        var t = 3;
+        if (checkNumber(t)) {
+            document.write(t + " la so nguyen to ")
+        }else {
+            document.write(t + " ko phai la so nguyen to")
+        }
+    </script>
+
+    <br><br>
+
+    <div>4. Hien thi ma tran 2 chieu</div>
+    <script>
+        // 4. hien thi ma tran 2 chieu
+        var z = [[1,1,0],[1,0,1],[0,1,1],[0,0,0]];
+        for (var i = 0; i<4; i++){
+            for (var j = 0; j<3; j++){
+                document.write(z[i][j] + " ");
+            }
+            document.write("<br/>");
+        }
+    </script>
+
+    <br><br>
+    
+    <div>5. Ham ktra regexp</div>
+    <script>
+        // 5. check email
+        var inputEmail = "thanh123@gmail.com";
+        var inputPassword = "thanh1234567890";
+
+        function checkEmail(email) {
+            var regexEmail = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})$/;
+            if (regexEmail.test(email)) {
+                document.write("True");
+            } else {
+                document.write("False");
+            } 
+        }
+
+        function checkPassword(password) {
+            var regrexPassword = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
+        
+            if (regrexPassword.test(password)) {
+                document.write("True")
+            } else {
+                document.write("False")
+            }
+        }
+
+        checkEmail(inputEmail);
+        document.write("<br/>");
+        checkPassword(inputPassword);
+    </script>
+
+    <br><br>
+
+    <div>6. Doi email va pass word</div>
+    <script>
+        var inputEmail = "thanh123@gmail.com";
+        var inputPassword = "thanh1234567890";
+
+        var regexEmail = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})$/;
+        var regrexPassword = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
+        var newEmail = "thanh12345@gmail.com";
+        var newPassword = "Thanh0504*";
+
+        function changeEmail(email, newEmail){
+            if (regexEmail.test(newEmail)) {
+                inputEmail = newEmail;
+                document.write("Email hop le");
+                document.write("<br/>");
+                document.write("Da thay doi Email :" + inputEmail);
+            } else {
+                document.write("Email ko hop le vui long dien email moi")
+            }
+        }
+
+        function changePassword(password, newPassword){
+            if (regrexPassword.test(newPassword)) {
+                inputPassword = newPassword;
+                document.write("Passwordd hop le");
+                document.write("<br/>");
+                document.write("Da thay doi Password :" + inputPassword)
+            }else {
+                document.write("Password ko hop le vui long dien Password moi")
+            }
+        }
+
+        changeEmail(inputEmail, newEmail);
+        document.write("<br/>")
+        changePassword(inputPassword, newPassword)
+    </script>
+
+    <br><br>
+    
+    <div>7. Form dien Information va 8. verify email</div>
+    <br>
+    <div class="content" style="width: 500px">
+        <form action="" method="post" id="fillEmailAndPasswordFormId">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="emailId">Email</span>
+                <br>
+                <input type="text" id="emailInput" style="width: 200px; padding: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; 
+                margin-top: 6px; margin-bottom: 16px;" />
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="passwordId">Password</span>
+                <br>
+                <input type="password" id="passwordInput" style="width: 200px; padding: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; 
+                margin-top: 6px; margin-bottom: 16px;" />
+            </div>
+            <input type="button" value="Submit" onclick="verifyUser()" style="width: 200px; margin-top: 5px; background-color: #04AA6D; color: white;">
+        </form>
+    </div>
+    
+    <script>
+        // 8. Verify email
+        var regexEmail = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})$/;
+        var regexPassword = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+        
+        function verifyUser() {
+            var enteredEmail = document.getElementById("emailInput").value;
+            var enteredPassword = document.getElementById("passwordInput").value;
+        
+            if (regexEmail.test(enteredEmail) && regexPassword.test(enteredPassword)) {
+                alert("Dang nhap thanh cong!");
+            } else {
+                alert("Thong tin khong hop le vui long nhap lai Email hoac Password");
+            }
+        }
+    </script>
+</body>
+</html>
