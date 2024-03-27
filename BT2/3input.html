@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Xoá hàng sản phẩm</title>
+  <link rel="stylesheet" href="dom.css">
+</head>
+    <style>
+    </style>
+<body>
+    <div class="heading"> bài</div>
+  <div id="product-container">
+    <!-- Đây là nơi các hàng sản phẩm sẽ được thêm vào -->
+  </div>
+  <script>
+    let productIndex = 1; // Số tự tăng để đánh số sản phẩm
+
+    function addProductRow() {
+      const container = document.getElementById("product-container");
+
+      // Tạo các thẻ input và button
+      const row = document.createElement("div");
+      const productNameInput = createInputWithPlaceholder("Tên sản phẩm");
+      const mspInput = createInputWithPlaceholder("Mã sản phẩm");
+      const tenInput = createInputWithPlaceholder("Tên");
+      const addButton = createButton("+");
+      const removeButton = createButton("-");
+
+
+      // Thêm css cho nút 
+      // Áp dụng CSS cho nút xoá
+      removeButton.style.backgroundColor = "red";
+      removeButton.style.color = "white";
+      removeButton.style.border = "none";
+      removeButton.style.padding = "5px 10px";
+      removeButton.style.marginLeft = "5px";
+      removeButton.style.cursor ="pointer";
+
+      // Áp dụng CSS cho nút thêm
+      addButton.style.backgroundColor = "green";
+      addButton.style.color = "white";
+      addButton.style.border = "none";
+      addButton.style.padding = "5px 10px";
+      addButton.style.marginLeft = "5px";
+      addButton.style.cursor ="pointer";
+
+      // Thêm sự kiện click cho nút xoá
+      removeButton.addEventListener("click", function() {
+        container.removeChild(row);
+      });
+
+      // Thêm sự kiện click cho nút thêm
+      addButton.addEventListener("click", addProductRow);
+
+      // Thêm các thẻ vào hàng
+      row.appendChild(productNameInput);
+      row.appendChild(mspInput);
+      row.appendChild(tenInput);
+      row.appendChild(addButton);
+      row.appendChild(removeButton);
+
+      // Thêm hàng vào container
+      container.appendChild(row);
+
+      // Tăng số tự tăng cho sản phẩm tiếp theo
+      productIndex++;
+    }
+
+    // Tạo thẻ input có place 
+    function createInputWithPlaceholder(placeholder) {
+      const input = document.createElement("input");
+      input.placeholder = placeholder;
+      return input;
+    }
+
+    // Tạo thẻ button với nội dung
+    function createButton(text) {
+      const button = document.createElement("button");
+      button.textContent = text;
+      return button;
+    }
+
+    // Tự động thêm một hàng khi trang được tải
+    addProductRow();
+  </script>
+</body>
+</html>

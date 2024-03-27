@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Product Rows</title>
+</head>
+<body>
+
+<div id="productTable">
+    <!-- Initial Row -->
+    <div class="productRow">
+        <label for="SP">SP1</label>
+        <input type="text" placeholder="MSP">
+        <input type="text" placeholder="Ten">
+        <input type="text" placeholder="SL">
+        <button onclick="addRow()">Thêm hàng</button>
+        <button onclick="removeRow(this)">Xoá hàng</button>
+    </div>
+</div>
+
+<script>
+let rowIndex = 2; // Số tự tăng cho index sản phẩm
+
+function addRow() {
+    const productTable = document.getElementById('productTable');
+    const lastRow = productTable.lastElementChild;
+
+    // Tạo một hàng mới
+    const newRow = document.createElement('div');
+    newRow.classList.add('productRow');
+
+    // Tạo label cho sản phẩm mới
+    const newLabel = document.createElement('label');
+    newLabel.textContent = 'SP' + rowIndex;
+    newLabel.setAttribute('for', 'SP' + rowIndex);
+
+    // Thêm label vào hàng mới
+    newRow.appendChild(newLabel);
+    
+    // Tạo các input
+    const inputs = ['MSP', 'Ten', 'SL'].map(placeholder => {
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.placeholder = placeholder;
+        return input;
+    });
+
+    // Thêm các input vào hàng mới
+
+    inputs.forEach(input => {
+        newRow.appendChild(input);
+    });
+
+    // Tạo các button
+    const addButton = document.createElement('button');
+    addButton.textContent = 'Thêm hàng';
+    addButton.onclick = addRow;
+
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Xoá hàng';
+    removeButton.onclick = function() {
+        removeRow(newRow);
+    };
+
+    // Thêm các button vào hàng mới
+    newRow.appendChild(addButton);
+    newRow.appendChild(removeButton);
+
+    // Chèn hàng mới vào sau hàng cuối cùng
+    productTable.insertBefore(newRow, lastRow.nextSibling);
+
+    rowIndex++; // Tăng số tự tăng cho index sản phẩm
+}
+
+function removeRow(row) {
+    const newLabel = document.createElement('label');
+    newLabel.textContent = 'SP' + rowIndex;
+    newLabel.setAttribute('for', 'SP' + rowIndex);
+    const productTable = document.getElementById('productTable');
+    productTable.removeChild(row);
+
+    rowIndex--;
+}
+</script>
+
+</body>
+</html>
